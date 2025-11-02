@@ -36,7 +36,7 @@ export default function Expenses() {
       description,
       notes,
       date,
-      budgetId: budgetId || undefined,
+      budgetId: budgetId === 'none' || !budgetId ? undefined : budgetId,
     });
 
     toast.success(isArabic ? 'تم إضافة المصروف بنجاح' : 'Expense added successfully');
@@ -136,7 +136,7 @@ export default function Expenses() {
                       <SelectValue placeholder={isArabic ? 'اختر الميزانية' : 'Select budget'} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">{isArabic ? 'بدون ميزانية' : 'No budget'}</SelectItem>
+                      <SelectItem value="none">{isArabic ? 'بدون ميزانية' : 'No budget'}</SelectItem>
                       {budgets.filter(b => !b.hidden).map(budget => (
                         <SelectItem key={budget.id} value={budget.id}>
                           {budget.name} ({budget.category || (isArabic ? 'عام' : 'General')})

@@ -18,7 +18,7 @@ export default function Budgets() {
   const [editingBudget, setEditingBudget] = useState<string | null>(null);
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('all');
   const [period, setPeriod] = useState<'weekly' | 'monthly' | 'quarterly' | 'yearly'>('monthly');
 
   const currencySymbol = settings.currency === 'USD' ? '$' : settings.currency === 'EUR' ? '€' : settings.currency === 'EGP' ? 'E£' : 'SAR';
@@ -34,7 +34,7 @@ export default function Budgets() {
       updateBudget(editingBudget, {
         name,
         amount: parseFloat(amount),
-        category: category || undefined,
+        category: category === 'all' ? undefined : category,
         period,
       });
       toast.success(isArabic ? 'تم تحديث الميزانية بنجاح' : 'Budget updated successfully');
@@ -44,7 +44,7 @@ export default function Budgets() {
         name,
         amount: parseFloat(amount),
         spent: 0,
-        category: category || undefined,
+        category: category === 'all' ? undefined : category,
         period,
         startDate: new Date().toISOString(),
       });
@@ -53,7 +53,7 @@ export default function Budgets() {
 
     setName('');
     setAmount('');
-    setCategory('');
+    setCategory('all');
     setShowForm(false);
   };
 
@@ -61,7 +61,7 @@ export default function Budgets() {
     setEditingBudget(budget.id);
     setName(budget.name);
     setAmount(budget.amount.toString());
-    setCategory(budget.category || '');
+    setCategory(budget.category || 'all');
     setPeriod(budget.period);
     setShowForm(true);
   };
@@ -86,7 +86,7 @@ export default function Budgets() {
             setEditingBudget(null);
             setName('');
             setAmount('');
-            setCategory('');
+            setCategory('all');
             setShowForm(!showForm);
           }}>
             <Plus className="mr-2 h-4 w-4" />
@@ -140,7 +140,7 @@ export default function Budgets() {
                       <SelectValue placeholder={isArabic ? 'كل الفئات' : 'All categories'} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">{isArabic ? 'كل الفئات' : 'All categories'}</SelectItem>
+                      <SelectItem value="all">{isArabic ? 'كل الفئات' : 'All categories'}</SelectItem>
                       {categories.map(cat => (
                         <SelectItem key={cat.id} value={cat.name}>
                           {cat.icon} {cat.name}
@@ -172,7 +172,7 @@ export default function Budgets() {
                   setEditingBudget(null);
                   setName('');
                   setAmount('');
-                  setCategory('');
+                  setCategory('all');
                 }}>
                   {isArabic ? 'إلغاء' : 'Cancel'}
                 </Button>
