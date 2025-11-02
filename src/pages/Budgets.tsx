@@ -69,18 +69,19 @@ export default function Budgets() {
   const displayedBudgets = showHidden ? budgets : budgets.filter(b => !b.hidden);
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex justify-between items-center">
+    <div className="p-4 sm:p-6 space-y-6 max-w-7xl mx-auto">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold">{isArabic ? 'الميزانيات' : 'Budgets'}</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl font-bold">{isArabic ? 'الميزانيات' : 'Budgets'}</h1>
+          <p className="text-muted-foreground text-sm sm:text-base">
             {isArabic ? 'تتبع وإدارة ميزانياتك' : 'Track and manage your budgets'}
           </p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" onClick={() => setShowHidden(!showHidden)}>
+        <div className="flex gap-2 flex-wrap">
+          <Button variant="outline" onClick={() => setShowHidden(!showHidden)} className="flex-1 sm:flex-none">
             {showHidden ? <Eye className="mr-2 h-4 w-4" /> : <EyeOff className="mr-2 h-4 w-4" />}
-            {showHidden ? (isArabic ? 'إخفاء المخفية' : 'Hide Hidden') : (isArabic ? 'عرض المخفية' : 'Show Hidden')}
+            <span className="hidden sm:inline">{showHidden ? (isArabic ? 'إخفاء المخفية' : 'Hide Hidden') : (isArabic ? 'عرض المخفية' : 'Show Hidden')}</span>
+            <span className="sm:hidden">{showHidden ? (isArabic ? 'إخفاء' : 'Hide') : (isArabic ? 'عرض' : 'Show')}</span>
           </Button>
           <Button onClick={() => {
             setEditingBudget(null);
@@ -88,9 +89,10 @@ export default function Budgets() {
             setAmount('');
             setCategory('all');
             setShowForm(!showForm);
-          }}>
+          }} className="flex-1 sm:flex-none">
             <Plus className="mr-2 h-4 w-4" />
-            {isArabic ? 'إضافة ميزانية' : 'Add Budget'}
+            <span className="hidden sm:inline">{isArabic ? 'إضافة ميزانية' : 'Add Budget'}</span>
+            <span className="sm:hidden">{isArabic ? 'إضافة' : 'Add'}</span>
           </Button>
         </div>
       </div>
