@@ -27,7 +27,7 @@ const App = () => (
         <BrowserRouter>
           <div className="flex min-h-screen">
             <Sidebar />
-            <main className="flex-1 lg:ml-64">
+            <main className="flex-1 lg:ml-64 pt-14 lg:pt-0">
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/expenses" element={<Expenses />} />

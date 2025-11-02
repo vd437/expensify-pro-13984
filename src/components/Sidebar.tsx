@@ -39,14 +39,20 @@ export function Sidebar() {
 
   return (
     <>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="fixed top-4 left-4 z-50 lg:hidden"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <X /> : <Menu />}
-      </Button>
+      {/* Mobile toggle button - positioned in top app bar area */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-background/95 backdrop-blur-sm border-b z-50 flex items-center px-4 gap-3">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="hover:bg-accent"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
+        <h1 className="text-lg font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          {settings.language === 'ar' ? 'مدير النفقات' : 'Expense Manager'}
+        </h1>
+      </div>
 
       <aside
         className={cn(

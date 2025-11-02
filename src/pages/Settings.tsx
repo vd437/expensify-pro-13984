@@ -2,9 +2,10 @@ import { useApp } from '@/contexts/AppContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
-import { Moon, Sun } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Moon, Sun, Bell, BellOff } from 'lucide-react';
 import { toast } from 'sonner';
+import { cn } from '@/lib/utils';
 
 export default function Settings() {
   const { settings, updateSettings } = useApp();
@@ -37,13 +38,31 @@ export default function Settings() {
                 {isArabic ? 'التبديل بين الوضع الفاتح والداكن' : 'Toggle between light and dark theme'}
               </p>
             </div>
-            <div className="flex items-center gap-2">
-              <Sun className="h-4 w-4" />
-              <Switch
-                checked={settings.theme === 'dark'}
-                onCheckedChange={handleThemeToggle}
-              />
-              <Moon className="h-4 w-4" />
+            <div className="inline-flex items-center rounded-full border border-border bg-muted p-1">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleThemeToggle}
+                className={cn(
+                  "rounded-full px-3 transition-all",
+                  settings.theme === 'light' && "bg-background shadow-sm"
+                )}
+              >
+                <Sun className="h-4 w-4 mr-1.5" />
+                {isArabic ? 'فاتح' : 'Light'}
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleThemeToggle}
+                className={cn(
+                  "rounded-full px-3 transition-all",
+                  settings.theme === 'dark' && "bg-background shadow-sm"
+                )}
+              >
+                <Moon className="h-4 w-4 mr-1.5" />
+                {isArabic ? 'داكن' : 'Dark'}
+              </Button>
             </div>
           </div>
         </CardContent>
@@ -128,17 +147,38 @@ export default function Settings() {
                 {isArabic ? 'استقبال الإشعارات حول الميزانية والنفقات' : 'Receive notifications about budgets and expenses'}
               </p>
             </div>
-            <Switch
-              checked={settings.notifications}
-              onCheckedChange={(checked) => {
-                updateSettings({ notifications: checked });
-                toast.success(
-                  checked
-                    ? (isArabic ? 'تم تفعيل الإشعارات' : 'Notifications enabled')
-                    : (isArabic ? 'تم تعطيل الإشعارات' : 'Notifications disabled')
-                );
-              }}
-            />
+            <div className="inline-flex items-center rounded-full border border-border bg-muted p-1">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  updateSettings({ notifications: false });
+                  toast.success(isArabic ? 'تم تعطيل الإشعارات' : 'Notifications disabled');
+                }}
+                className={cn(
+                  "rounded-full px-3 transition-all",
+                  !settings.notifications && "bg-background shadow-sm"
+                )}
+              >
+                <BellOff className="h-4 w-4 mr-1.5" />
+                {isArabic ? 'متوقف' : 'Off'}
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  updateSettings({ notifications: true });
+                  toast.success(isArabic ? 'تم تفعيل الإشعارات' : 'Notifications enabled');
+                }}
+                className={cn(
+                  "rounded-full px-3 transition-all",
+                  settings.notifications && "bg-background shadow-sm"
+                )}
+              >
+                <Bell className="h-4 w-4 mr-1.5" />
+                {isArabic ? 'مفعّل' : 'On'}
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>
