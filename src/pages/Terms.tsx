@@ -16,7 +16,7 @@ export default function Terms() {
           </h1>
         </div>
         <p className="text-muted-foreground">
-          {isArabic ? 'آخر تحديث: نوفمبر 2024' : 'Last updated: November 2024'}
+          {isArabic ? 'آخر تحديث: نوفمبر 2025' : 'Last updated: November 2025'}
         </p>
       </div>
 
@@ -40,15 +40,28 @@ export default function Terms() {
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
             {isArabic
-              ? 'يوفر تطبيق إدارة النفقات أدوات لتتبع النفقات الشخصية والميزانيات والفئات المالية. يتم تخزين جميع البيانات محليًا في متصفح المستخدم ولا يتم إرسالها إلى الخوادم الخارجية.'
-              : 'Expense Manager provides tools for tracking personal expenses, budgets, and financial categories. All data is stored locally in your browser and is not transmitted to external servers.'}
+              ? 'يوفر تطبيق إدارة النفقات أدوات شاملة لتتبع النفقات الشخصية والميزانيات والفئات المالية. يتم تخزين بياناتك بشكل آمن على خوادم Supabase السحابية، مما يتيح المزامنة عبر الأجهزة، والنسخ الاحتياطي التلقائي، والوصول من أي مكان.'
+              : 'Expense Manager provides comprehensive tools for tracking personal expenses, budgets, and financial categories. Your data is securely stored on Supabase cloud servers, enabling cross-device synchronization, automatic backups, and access from anywhere.'}
           </p>
           <ul className="list-disc list-inside space-y-2 mr-4">
-            <li>{isArabic ? 'تتبع النفقات والدخل' : 'Track expenses and income'}</li>
+            <li>{isArabic ? 'تتبع النفقات والدخل مع المزامنة السحابية' : 'Track expenses and income with cloud sync'}</li>
             <li>{isArabic ? 'إدارة الميزانيات والفئات' : 'Manage budgets and categories'}</li>
             <li>{isArabic ? 'إنشاء التقارير والتحليلات' : 'Generate reports and analytics'}</li>
             <li>{isArabic ? 'دعم متعدد العملات واللغات' : 'Multi-currency and language support'}</li>
+            <li>{isArabic ? 'الوصول عبر الأجهزة المتعددة' : 'Multi-device access'}</li>
+            <li>{isArabic ? 'نسخ احتياطي تلقائي وآمن' : 'Automatic and secure backups'}</li>
           </ul>
+          
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mt-4">
+            <h4 className="font-semibold text-foreground mb-2">
+              {isArabic ? 'تخزين البيانات السحابية' : 'Cloud Data Storage'}
+            </h4>
+            <p>
+              {isArabic
+                ? 'بموجب استخدامك للخدمة، فإنك توافق على تخزين بياناتك المالية بشكل آمن على البنية التحتية السحابية لـ Supabase. يتيح هذا التخزين السحابي ميزات محسّنة مثل المزامنة عبر الأجهزة، والنسخ الاحتياطي التلقائي، وحماية البيانات من فقدان الجهاز. تظل مالكًا لجميع بياناتك ويمكنك تصديرها أو حذفها في أي وقت.'
+                : 'By using the Service, you agree to have your financial data securely stored on Supabase cloud infrastructure. This cloud storage enables enhanced features such as cross-device synchronization, automatic backups, and protection from device loss. You remain the owner of all your data and can export or delete it at any time.'}
+            </p>
+          </div>
         </CardContent>
       </Card>
 
@@ -59,8 +72,35 @@ export default function Terms() {
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
             {isArabic
-              ? 'أنت مسؤول عن الحفاظ على دقة المعلومات التي تدخلها في الخدمة. البيانات المخزنة محليًا على جهازك ولن نتحمل المسؤولية عن فقدان البيانات الناتج عن مسح ذاكرة التخزين المؤقت للمتصفح أو فقدان الجهاز.'
-              : 'You are responsible for maintaining the accuracy of information you enter into the Service. Data is stored locally on your device, and we are not responsible for data loss resulting from browser cache clearing or device loss.'}
+              ? 'أنت مسؤول عن الحفاظ على دقة المعلومات التي تدخلها في الخدمة وأمان بيانات اعتماد حسابك. يتم تخزين بياناتك بشكل آمن على خوادمنا السحابية مع نسخ احتياطية منتظمة. أنت مسؤول عن:'
+              : 'You are responsible for maintaining the accuracy of information you enter into the Service and the security of your account credentials. Your data is securely stored on our cloud servers with regular backups. You are responsible for:'}
+          </p>
+          <ul className="list-disc list-inside space-y-2 mr-4">
+            <li>
+              {isArabic
+                ? 'الحفاظ على سرية كلمة المرور الخاصة بك'
+                : 'Maintaining the confidentiality of your password'}
+            </li>
+            <li>
+              {isArabic
+                ? 'إبلاغنا فورًا بأي استخدام غير مصرح به لحسابك'
+                : 'Notifying us immediately of any unauthorized use of your account'}
+            </li>
+            <li>
+              {isArabic
+                ? 'التأكد من دقة واكتمال المعلومات التي تقدمها'
+                : 'Ensuring the accuracy and completeness of information you provide'}
+            </li>
+            <li>
+              {isArabic
+                ? 'الامتثال لجميع القوانين واللوائح المعمول بها'
+                : 'Complying with all applicable laws and regulations'}
+            </li>
+          </ul>
+          <p className="mt-4">
+            {isArabic
+              ? 'ملاحظة: نقوم بإجراء نسخ احتياطية منتظمة لبياناتك، ولكن يوصى بتصدير بياناتك بشكل دوري كإجراء احترازي إضافي.'
+              : 'Note: While we perform regular backups of your data, we recommend periodically exporting your data as an additional precaution.'}
           </p>
         </CardContent>
       </Card>

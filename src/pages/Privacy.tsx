@@ -16,7 +16,7 @@ export default function Privacy() {
           </h1>
         </div>
         <p className="text-muted-foreground">
-          {isArabic ? 'آخر تحديث: نوفمبر 2024' : 'Last updated: November 2024'}
+          {isArabic ? 'آخر تحديث: نوفمبر 2025' : 'Last updated: November 2025'}
         </p>
       </div>
 
@@ -39,24 +39,58 @@ export default function Privacy() {
         </CardHeader>
         <CardContent className="space-y-4 text-muted-foreground">
           <h3 className="font-semibold text-foreground">
-            {isArabic ? '2.1 البيانات المخزنة محليًا' : '2.1 Locally Stored Data'}
+            {isArabic ? '2.1 البيانات المخزنة على السحابة' : '2.1 Cloud-Stored Data'}
           </h3>
           <p>
             {isArabic
-              ? 'يقوم التطبيق بتخزين البيانات التالية محليًا على جهازك باستخدام تخزين المتصفح المحلي:'
-              : 'The application stores the following data locally on your device using browser local storage:'}
+              ? 'يقوم التطبيق الآن بتخزين البيانات التالية بشكل آمن على خوادم Supabase السحابية:'
+              : 'The application now securely stores the following data on Supabase cloud servers:'}
           </p>
           <ul className="list-disc list-inside space-y-2 mr-4">
             <li>{isArabic ? 'سجلات النفقات والدخل' : 'Expense and income records'}</li>
             <li>{isArabic ? 'معلومات الميزانية' : 'Budget information'}</li>
             <li>{isArabic ? 'الفئات المخصصة' : 'Custom categories'}</li>
             <li>{isArabic ? 'تفضيلات الإعدادات (اللغة، العملة، السمة)' : 'Settings preferences (language, currency, theme)'}</li>
+            <li>{isArabic ? 'معلومات حساب المستخدم والمصادقة' : 'User account and authentication information'}</li>
           </ul>
-          <p className="font-medium text-foreground">
-            {isArabic
-              ? 'مهم: لا يتم إرسال أي من هذه البيانات إلى خوادمنا. تظل جميع البيانات على جهازك فقط.'
-              : 'Important: None of this data is transmitted to our servers. All data remains exclusively on your device.'}
-          </p>
+          
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mt-4">
+            <h4 className="font-semibold text-foreground mb-2">
+              {isArabic ? 'لماذا نخزن بياناتك على السحابة؟' : 'Why We Store Your Data in the Cloud'}
+            </h4>
+            <p className="mb-2">
+              {isArabic
+                ? 'قمنا بالانتقال إلى التخزين السحابي لتوفير تجربة أفضل وأكثر موثوقية:'
+                : 'We moved to cloud storage to provide a better and more reliable experience:'}
+            </p>
+            <ul className="list-disc list-inside space-y-1.5 mr-4">
+              <li>
+                {isArabic
+                  ? 'المزامنة عبر الأجهزة: الوصول إلى بياناتك من أي جهاز وفي أي مكان'
+                  : 'Cross-Device Sync: Access your data from any device, anywhere'}
+              </li>
+              <li>
+                {isArabic
+                  ? 'النسخ الاحتياطي التلقائي: حماية بياناتك من الفقدان عند تلف الجهاز أو مسح ذاكرة التخزين المؤقت'
+                  : 'Automatic Backup: Protect your data from loss due to device damage or cache clearing'}
+              </li>
+              <li>
+                {isArabic
+                  ? 'موثوقية محسّنة: بنية تحتية على مستوى المؤسسات مع وقت تشغيل يصل إلى 99.9%'
+                  : 'Enhanced Reliability: Enterprise-grade infrastructure with 99.9% uptime'}
+              </li>
+              <li>
+                {isArabic
+                  ? 'ميزات متقدمة: تمكين التقارير التعاونية والمشاركة وإمكانيات التحليل المتقدمة'
+                  : 'Advanced Features: Enable collaborative reports, sharing, and advanced analytics capabilities'}
+              </li>
+              <li>
+                {isArabic
+                  ? 'أمان محسّن: التشفير من طرف إلى طرف وأنظمة المصادقة الآمنة'
+                  : 'Improved Security: End-to-end encryption and secure authentication systems'}
+              </li>
+            </ul>
+          </div>
 
           <h3 className="font-semibold text-foreground mt-6">
             {isArabic ? '2.2 ملفات تعريف الارتباط وتقنيات التتبع' : '2.2 Cookies and Tracking Technologies'}
@@ -145,14 +179,41 @@ export default function Privacy() {
         <CardContent className="space-y-4 text-muted-foreground">
           <p>
             {isArabic
-              ? 'نحن نتخذ أمان بياناتك على محمل الجد. نظرًا لأن جميع البيانات مخزنة محليًا على جهازك، فإنك مسؤول عن:'
-              : 'We take the security of your data seriously. Since all data is stored locally on your device, you are responsible for:'}
+              ? 'نحن نتخذ أمان بياناتك على محمل الجد. يتم تخزين بياناتك بشكل آمن على خوادم Supabase مع تدابير الحماية التالية:'
+              : 'We take the security of your data seriously. Your data is securely stored on Supabase servers with the following protections:'}
           </p>
           <ul className="list-disc list-inside space-y-2 mr-4">
-            <li>{isArabic ? 'الحفاظ على أمان جهازك' : 'Maintaining the security of your device'}</li>
-            <li>{isArabic ? 'استخدام متصفح محدث وآمن' : 'Using an up-to-date and secure browser'}</li>
-            <li>{isArabic ? 'عمل نسخ احتياطية من بياناتك بانتظام' : 'Regularly backing up your data'}</li>
+            <li>
+              {isArabic
+                ? 'التشفير أثناء النقل والتخزين: جميع البيانات مشفرة باستخدام معايير الصناعة'
+                : 'Encryption in Transit and at Rest: All data is encrypted using industry standards'}
+            </li>
+            <li>
+              {isArabic
+                ? 'مصادقة آمنة: نظام مصادقة متقدم لحماية حسابك'
+                : 'Secure Authentication: Advanced authentication system to protect your account'}
+            </li>
+            <li>
+              {isArabic
+                ? 'النسخ الاحتياطي المنتظم: نسخ احتياطية تلقائية لمنع فقدان البيانات'
+                : 'Regular Backups: Automatic backups to prevent data loss'}
+            </li>
+            <li>
+              {isArabic
+                ? 'عزل البيانات: بياناتك معزولة ومحمية من المستخدمين الآخرين'
+                : 'Data Isolation: Your data is isolated and protected from other users'}
+            </li>
+            <li>
+              {isArabic
+                ? 'الامتثال: يلتزم Supabase بمعايير SOC 2 Type II و ISO 27001'
+                : 'Compliance: Supabase complies with SOC 2 Type II and ISO 27001 standards'}
+            </li>
           </ul>
+          <p className="mt-4 font-medium text-foreground">
+            {isArabic
+              ? 'ملاحظة: أنت مالك بياناتك بالكامل ويمكنك حذفها أو تصديرها في أي وقت.'
+              : 'Note: You remain the full owner of your data and can delete or export it at any time.'}
+          </p>
         </CardContent>
       </Card>
 
@@ -163,11 +224,42 @@ export default function Privacy() {
         <CardContent className="space-y-4 text-muted-foreground">
           <p>{isArabic ? 'لديك الحقوق التالية فيما يتعلق ببياناتك:' : 'You have the following rights regarding your data:'}</p>
           <ul className="list-disc list-inside space-y-2 mr-4">
-            <li>{isArabic ? 'الوصول: يمكنك الوصول إلى جميع بياناتك المخزنة في أي وقت' : 'Access: You can access all your stored data at any time'}</li>
-            <li>{isArabic ? 'التعديل: يمكنك تحديث أو تعديل بياناتك في التطبيق' : 'Modification: You can update or modify your data in the application'}</li>
-            <li>{isArabic ? 'الحذف: يمكنك حذف جميع بياناتك عن طريق مسح ذاكرة التخزين المؤقت للمتصفح' : 'Deletion: You can delete all your data by clearing your browser cache'}</li>
-            <li>{isArabic ? 'التصدير: يمكنك تصدير بياناتك باستخدام ميزات التطبيق' : 'Export: You can export your data using application features'}</li>
+            <li>
+              {isArabic
+                ? 'الوصول: يمكنك الوصول إلى جميع بياناتك المخزنة في أي وقت من خلال حسابك'
+                : 'Access: You can access all your stored data at any time through your account'}
+            </li>
+            <li>
+              {isArabic
+                ? 'التعديل: يمكنك تحديث أو تعديل بياناتك في التطبيق'
+                : 'Modification: You can update or modify your data in the application'}
+            </li>
+            <li>
+              {isArabic
+                ? 'الحذف الكامل: يمكنك حذف حسابك وجميع البيانات المرتبطة به نهائيًا'
+                : 'Complete Deletion: You can permanently delete your account and all associated data'}
+            </li>
+            <li>
+              {isArabic
+                ? 'التصدير: يمكنك طلب نسخة كاملة من بياناتك بتنسيق قابل للقراءة آليًا'
+                : 'Export: You can request a complete copy of your data in a machine-readable format'}
+            </li>
+            <li>
+              {isArabic
+                ? 'إلغاء الموافقة: يمكنك سحب موافقتك على معالجة بياناتك في أي وقت'
+                : 'Withdraw Consent: You can withdraw your consent to data processing at any time'}
+            </li>
+            <li>
+              {isArabic
+                ? 'النقل: يمكنك طلب نقل بياناتك إلى خدمة أخرى'
+                : 'Portability: You can request to transfer your data to another service'}
+            </li>
           </ul>
+          <p className="mt-4">
+            {isArabic
+              ? 'لممارسة أي من هذه الحقوق، يرجى الاتصال بنا على: privacy@expensemanager.app'
+              : 'To exercise any of these rights, please contact us at: privacy@expensemanager.app'}
+          </p>
         </CardContent>
       </Card>
 
